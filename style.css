@@ -1,182 +1,290 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-image: url("https://source.unsplash.com/random/1920x1080/?weather/");
-  background-size: cover;
-  background-position: center;
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* vh: web tarayıcısına göre boyutlanır*/
+    background-image: url("https://source.unsplash.com/random/1920x1080/?weather/");   
 }
 
 .wrapper {
-  width: 400px;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease-in-out;
+    width: 400px;
+    background: #fff;
+    border-radius: 7px;
+    
 }
 
 .wrapper header {
-  color: #333;
-  font-size: 24px;
-  font-weight: 600;
-  padding: 20px 15px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+    color: #8d8b8b;
+    font-size: 21px;
+    font-weight: 500;
+    padding: 16px 15px;
+    display: flex;
+    align-items: center; /* üstten alttan ortaladık */ 
+    /* justify-content: center; */
+    border-bottom: 1px solid #bfbfbf; /* Çizgi çizdik */
 }
 
-header i {
-  cursor: pointer;
-  font-size: 0;
-  display: none;
+header i{ /*arrow icon*/
+cursor: pointer;
+font-size: 0em; /*em parent'a göre boyut alır. Burada class active olunca görnmeyecek 0 em olduğu için.*/
+margin-right: 8px;
 }
 
-.wrapper.active header i {
-  font-size: 24px;
-  display: inline-block;
-  margin-right: 10px;
+.wrapper.active header i{ /* arrow icon class active olunca görünmesi için*/
+    font-size: 30px;
+    margin-left: 5px;
 }
 
-.wrapper .input-part {
-  margin: 20px;
-  text-align: center;
+.wrapper .input-part { /*input alanı*/
+    margin: 20px 25px 30px; /*top left bottom*/
 }
 
-.input-part input,
-button {
-  width: 100%;
-  padding: 15px;
-  font-size: 18px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  outline: none;
+.wrapper.active .input-part{ /*hava durumu görünürken input alanını gizle*/
+display: none;
 }
 
-.input-part input {
-  text-align: center;
+.input-part .info-txt { /*Please enter ... alanımız için*/
+    display: none; /*aşağıdaki durumlara göre (error, pending, valid)  JS ile görünecek o yüzden none yaptık. */
+    font-size: 17px;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 7px;
+    margin-bottom: 15px;
 }
 
-.input-part input:focus {
-  border: 1px solid #555;
+.info-txt.error{ /* giriş yapılmadığında verilecek uyarı için*/
+    display: block;
+    color: #721c24;
+    background: #f8d7da ;
+    border: 1px solid #f5c6cb;
+}
+
+.info-txt.pending{ /* giriş doğru olduğunda */
+    display: block;
+    color: #0c5460;
+    background: #d1ecf1;
+    border: 1px solid #bee5eb;
+}
+
+.input-part :where(input,button) { /*input ve button için özellikleri uygula*/
+width: 100%;
+height: 55px;
+border: none;
+outline: none;
+font-size: 18px;
+border-radius: 7px;
+}
+
+.input-part input {  /*city girilecek alan*/
+    width: 75% !important;
+    text-align: center;
+    border: 1px solid #bfbfbf;
+}
+
+
+.input-part input:is(:focus, :valid ){ /* is class seçicisini de yok sayar, burada ne verildiyse onu uygular*/
+    /*":valid" doğru alanları vurgulamak için kullanılır*/
+    border: 1px solid #8d8b8b;
+}
+
+.input-part input::placeholder{
+    color:#bfbfbf;
+}
+
+.searchArea{
+display: flex;
+justify-content: space-between;
+align-items: center;
+cursor: pointer;
+}
+
+.searchIcon{
+border:1px solid #bfbfbf; 
+border-radius: 10px; 
+background-color:#8d8b8b;
+color: white;
+width: 25%;
+height: 55px;
+outline: none;
+font-size: 20px;
+ display: flex;
+justify-content: center;
+align-items: center;
+text-align: center; 
+padding-top: 14px;
+margin-left: 8px;
+transition: 0.3s ease; /*:hover efekti için*/
+}
+
+.searchIcon:hover {
+    background: #6b6a6a;
+}
+
+.input-part .separator { /*input ile button ayırıcı*/
+   height: 1px;
+   width: 100%;
+   margin: 25px 0;
+   background-color: #ccc; 
+   /*"or" yazısını ortaya hizalamak için aşağıdaki 3 flexbox kodu yazdık*/
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.separator::before{
+    content: "or";
+    color: #ccc;
+    padding: 0 15px; /* sağdan soldan boşluk ile tam ortada "--  or  --" yazımız oldu*/
+    font-size: 19px;
+    background-color: #fff;
 }
 
 .input-part button {
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: 0.3s;
+    color: #fff;
+    cursor: pointer;
+    background-color:#8d8b8b;
+    transition: 0.3s ease; /*:hover efekti için*/
 }
 
-.input-part button:hover {
-  background-color: #555;
+.input-part button:hover{
+    background: #6b6a6a;
 }
 
-.searchArea {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+
+.wrapper .weather-part{ /*weather bilgileri olan kısım*/
+    display:none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.searchIcon {
-  background-color: #333;
-  color: white;
-  padding: 0 15px;
-  border-radius: 5px;
-  cursor: pointer;
+.wrapper.active .weather-part{ /* hava durumu görününce olması istenen*/
+    display: flex;
 }
 
-.separator {
-  height: 1px;
-  background-color: #ccc;
-  margin: 20px 0;
-  position: relative;
+.weather-part img {
+       width: 170px;
+} 
+
+.weather-part .temp { /*deg ve numb olan kısım*/
+    display: flex;
+    font-size: 70px;
 }
 
-.separator::before {
-  content: "or";
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: white;
-  padding: 0 10px;
+.weather-part .temp .numb { /* sıcaklık değeri*/
+font-weight: 100;
 }
 
-.wrapper .weather-part {
-  display: none;
-  padding: 20px;
-  text-align: center;
+.weather-part .temp .deg { /*deg simgesi*/
+    font-size: 40px;
+    margin: 10px 5px 0 0 ;
+    display: block;
 }
 
-.wrapper.active .weather-part {
-  display: block;
+.weather-part .weather{ /*hava durumu bilgisi (clouds,rainy...)*/
+    font-size: 17px;
+    text-align: center;
+    margin: -5px 20px 15px;
 }
 
-.weather-part .weather-icon {
-  width: 150px;
-  margin-bottom: 20px;
+.weather-part .location{
+    display: flex;    
+    font-size: 19px;
+    margin-bottom: 30px;
+    text-align: center;
+    align-items: flex-start;
+    padding: 0 20px;
+
 }
 
-.temp {
-  font-size: 64px;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
+.location i{
+font-size: 21px;
+margin: 0 5px 0 0 ;
 }
 
-.weather {
-  font-size: 18px;
-  margin-top: 10px;
-  font-weight: 500;
+.weather-part .bottom-details{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #bfbfbf;
 }
 
-.location {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 15px;
-  font-size: 20px;
+.bottom-details .column {
+    width: 100%;
+    display: flex;
+    padding: 15px 0;
+    align-items: center;
+    justify-content: center;
 }
 
-.location i {
-  margin-right: 10px;
+.column i{
+   color: #8d8b8b; 
+   font-size: 40px;
 }
 
-.bottom-details {
-  display: flex;
-  justify-content: space-between;
-  border-top: 1px solid #ddd;
-  margin-top: 20px;
-  padding-top: 15px;
+.column.humidity {
+    border-left:1px solid #bfbfbf;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 16px;
+.column .details{
+    margin-left: 3px;
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: 20px;
-  font-size: 14px;
+.details .temp, .humidity span {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: -3px;
 }
 
-@media (max-width: 768px) {
-  .wrapper {
-    width: 90%;
+.details .temp .deg{
+    margin:0;
+    font-size: 17px;
+    padding: 0 2px 0 1px;
+}
+
+.column .details p{
+    font-size: 14px;
+    margin-top: -6px;
+}
+
+.humidity i{
+    font-size: 37px;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}
+
+
+@media screen and (max-width: 770px){
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .wrapper{
+        max-width: 400px;
+        max-height: 500px;
+        font-size: 20px;
+        margin: 0 20px 0 20px;
+    }
+
+  .wrapper header {
+      font-weight: 400;
   }
-}
+
+    img {
+        max-width: 170px;
+    }
+
+};
