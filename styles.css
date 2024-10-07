@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(180deg, #4ECDC4, #556270);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.card {
+    max-width: 470px;
+    width: 90%;
+    margin: 20px auto;
+    border-radius: 20px;
+    padding: 40px 35px;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    background: #f0f4f8;
+    color: #333;
+    padding: 10px 24px;
+    height: 48px;
+    border-radius: 30px;
+    margin-right: 16px;
+    font-size: 18px;
+    flex: 1;
+}
+
+.search button,
+.location-btn {
+    border: none;
+    outline: none;
+    background: #4ECDC4;
+    border-radius: 30px;
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.search button:hover,
+.location-btn:hover {
+    background: #45b3ab;
+}
+
+.loading {
+    margin: 10px 0;
+    font-size: 18px;
+    color: #4ECDC4;
+}
+
+.weather-icon {
+    width: 100px;
+    margin-top: 20px;
+}
+
+.weather h2 {
+    font-size: 32px;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #333;
+}
+
+.weather h3 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #4ECDC4;
+}
+
+.feels-like, .weather-description {
+    font-size: 20px;
+    color: #666;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img {
+    width: 30px;
+    margin-right: 12px;
+}
+
+.humidity, .wind {
+    font-size: 24px;
+    margin-top: -8px;
+    color: #4ECDC4;
+}
+
+.weather {
+    display: none;
+}
+
+.error {
+    text-align: left;
+    margin-top: 12px;
+    font-size: 16px;
+    margin-left: 12px;
+    color: rgb(255, 0, 0);
+    display: none;
+}
