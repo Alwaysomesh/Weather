@@ -8,49 +8,39 @@
     <link rel="stylesheet" href="style.css" />
 
     <!-- Icon -->
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
 
     <title>Weather App</title>
   </head>
   <body>
     <div class="wrapper">
-      <header><i class="bx bx-left-arrow-alt"></i>Weather App</header>
+      <header>
+        <i class="bx bx-left-arrow-alt" aria-label="Back"></i> Weather App
+      </header>
 
-      <!-- Middle area (input ,search, button)-->
+      <!-- Input section -->
       <section class="input-part">
         <p class="info-txt"></p>
         <div class="searchArea">
-          <input
-            type="text"
-            placeholder="Enter city name"
-            spellcheck="false"
-            required
-          />
-          <!-- spellcheck metnin yazım ve dilbilgisi kurallarına göre denetlenip denetlenmeyeceğini belirler-->
-          <i class="bx bx-search-alt searchIcon"></i>
+          <input type="text" placeholder="Enter city name" spellcheck="false" aria-label="City Name" required />
+          <i class="bx bx-search-alt searchIcon" aria-label="Search"></i>
         </div>
         <div class="separator"></div>
-        <button>Get Device Location</button>
+        <button aria-label="Get Device Location">Get Device Location</button>
       </section>
-<!-- Middle area End -->
 
-<!-- Weather active area start  -->
+      <!-- Weather information section -->
       <section class="weather-part">
-        <img src="#" alt="Weather Icon" />
+        <img src="#" alt="Weather Icon" class="weather-icon" />
         <div class="temp">
           <span class="numb">_</span>
           <span class="deg">°C</span>
         </div>
-
         <div class="weather">_</div>
         <div class="location">
-          <i class="bx bx-map"></i>
-          <span>_,_</span>
+          <i class="bx bx-map" aria-label="Location"></i>
+          <span>_, _</span>
         </div>
-
         <div class="bottom-details">
           <div class="column feels">
             <i class="bx bxs-thermometer"></i>
@@ -62,7 +52,6 @@
               <p>Feels like</p>
             </div>
           </div>
-
           <div class="column humidity">
             <i class="bx bxs-droplet-half"></i>
             <div class="details">
@@ -72,13 +61,10 @@
           </div>
         </div>
       </section>
-<!--Weather active area end  -->
-
-    </div> <!-- Wrapper div end -->
-    <footer style="background-color: black; color: white;">
-      <h3 style="margin-left: 35%;">copyright by alwaysomesh &copy; 2023 some rights reserved.</h3>
+    </div>
+    <footer>
+      <h3>© 2023 Weather App. Some rights reserved.</h3>
     </footer>
-
 
     <script src="script.js"></script>
   </body>
