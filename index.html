@@ -1,28 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Weather Prediction</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
-<body>
-    <div class="container">
-        <h1>Live Weather Prediction</h1>
-        <div class="search-box">
-            <input type="text" id="city-input" placeholder="Enter city name">
-            <button id="search-btn"><i class='bx bx-search'></i></button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Icon -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header><i class="bx bx-left-arrow-alt"></i>Weather App</header>
+
+      <!-- Middle area (input ,search, button)-->
+      <section class="input-part">
+        <p class="info-txt"></p>
+        <div class="searchArea">
+          <input
+            type="text"
+            placeholder="Enter city name"
+            spellcheck="false"
+            required
+          />
+          <i class="bx bx-search-alt searchIcon"></i>
         </div>
-        <div class="weather-info">
-            <h2 id="city-name"></h2>
-            <p id="temperature"></p>
-            <p id="feels-like"></p>
-            <p id="humidity"></p>
-            <p id="description"></p>
+        <div class="separator"></div>
+        <button>Get Device Location</button>
+      </section>
+
+      <!-- Weather active area start -->
+      <section class="weather-part">
+        <img src="#" alt="Weather Icon" />
+        <div class="temp">
+          <span class="numb">_</span>
+          <span class="deg">°C</span>
         </div>
-        <div id="error-message"></div>
-    </div>
+
+        <div class="weather">_</div>
+        <div class="location">
+          <i class="bx bx-map"></i>
+          <span>_,_</span>
+        </div>
+
+        <div class="bottom-details">
+          <div class="column feels">
+            <i class="bx bxs-thermometer"></i>
+            <div class="details">
+              <div class="temp">
+                <span class="numb-2">_</span>
+                <span class="deg">°C</span>
+              </div>
+              <p>Feels like</p>
+            </div>
+          </div>
+
+          <div class="column humidity">
+            <i class="bx bxs-droplet-half"></i>
+            <div class="details">
+              <span>_</span>
+              <p>Humidity</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div> <!-- Wrapper div end -->
+
+    <footer style="background-color: black; color: white;">
+      <h3 style="margin-left: 35%;">copyright by alwaysomesh &copy; 2023 some rights reserved.</h3>
+    </footer>
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
