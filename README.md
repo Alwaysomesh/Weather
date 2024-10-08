@@ -10,7 +10,7 @@ Welcome to the **Weather App**, a simple yet elegant web application that provid
 - **Responsive Design**: Works well on both desktop and mobile devices.
 
 ## API Used
-This project uses the OpenWeatherMap API to fetch weather data. You can get your API key from this link.
+This project uses the OpenWeatherMap API to fetch weather data.
 
 ## Usage
 1. Open the application in your browser.
