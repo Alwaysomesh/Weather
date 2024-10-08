@@ -77,4 +77,5 @@ searchBtn.addEventListener("click", () => {
     }
 });
 
+
 locationBtn.addEventListener("click", requestLocation);
