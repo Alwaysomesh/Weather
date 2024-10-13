@@ -1,3 +1,4 @@
+
 # Weather App 🌦️
 
 Welcome to the **Weather App**, a simple yet elegant web application that provides real-time weather information for any location worldwide. This project utilizes the OpenWeatherMap API to fetch current weather data and displays it in a user-friendly interface.
